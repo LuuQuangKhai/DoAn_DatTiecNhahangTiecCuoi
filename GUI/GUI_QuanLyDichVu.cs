@@ -16,7 +16,10 @@ namespace GUI
     public partial class GUI_QuanLyDichVu : UserControl
     {
         BLL_LoaiDichVu bll_loaidichvu = new BLL_LoaiDichVu();
+        BLL_DichVu bll_dichvu = new BLL_DichVu();
+
         int luachon = 0;
+        int luachon2 = 0;
         public GUI_QuanLyDichVu()
         {
             InitializeComponent();
@@ -25,6 +28,22 @@ namespace GUI
         private async void LayDanhSach()
         {
             dataGridView1.DataSource = await bll_loaidichvu.GetLoaiDichVu();
+        }
+
+        private async void LayDanhSachDichVu()
+        {
+            dataGridView2.DataSource = await bll_dichvu.GetAll();
+        }
+
+        private async void LoadComboBoxDichVu()
+        {
+            cboMaLoaiDichVu.Items.Clear();
+            List<DTO_LoaiDichVu> ds = await bll_loaidichvu.GetLoaiDichVu();
+
+            foreach(DTO_LoaiDichVu d in ds)
+            {
+                cboMaLoaiDichVu.Items.Add(d.MaLoaiDichVu);
+            }
         }
 
         private async void Them()
@@ -121,10 +140,110 @@ namespace GUI
             }
         }
 
+        private async void ThemDichVu()
+        {
+            if (txtMaDichVu.Text.Trim().Equals("") || txtTenDichVu.Text.Trim().Equals("") || txtHinhAnh.Text.Trim().Equals(""))
+            {
+                MessageBox.Show("Thông tin dịch vụ không được để trống!");
+            }
+            else
+            {
+                if (await bll_dichvu.Find(txtMaDichVu.Text.Trim()) == true)
+                {
+                    MessageBox.Show("Mã dịch vụ đã tồn tại!");
+                }
+                else
+                {
+                    DTO_DichVu dto = new DTO_DichVu();
+                    dto.MaDichVu = txtMaDichVu.Text.Trim();
+                    dto.TenDichVu = txtTenDichVu.Text.Trim();
+                    dto.HinhAnh = txtHinhAnh.Text.Trim();
+                    dto.MaLoaiDichVu = cboMaLoaiDichVu.Text;    
+
+                    bool ketqua = await bll_dichvu.Add(dto);
+
+                    if (ketqua == true)
+                    {
+                        MessageBox.Show("Thêm thành công.");
+                        LamMoiDichVu();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Thêm không thành công!!");
+                    }
+                }
+            }
+        }
+
+        private async void XoaDichVu()
+        {
+            if (txtMaDichVu.Text.Trim().Equals("") || txtTenDichVu.Text.Trim().Equals("") || txtHinhAnh.Text.Trim().Equals(""))
+            {
+                MessageBox.Show("Mã dịch vụ không được để trống!");
+            }
+            else
+            {
+                if (await bll_dichvu.Find(txtMaDichVu.Text.Trim()) == true)
+                {
+                    bool ketqua = await bll_dichvu.Delete(txtMaDichVu.Text.Trim());
+                    if (ketqua == true)
+                    {
+                        MessageBox.Show("Xóa thành công.");
+                        LamMoiDichVu();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Xóa không thành công!!");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Mã dịch vụ không tồn tại");
+                }
+            }
+        }
+
+        private async void SuaDichVu()
+        {
+            if (txtMaDichVu.Text.Trim().Equals("") || txtTenDichVu.Text.Trim().Equals("") || txtHinhAnh.Text.Trim().Equals(""))
+            {
+                MessageBox.Show("Mã dịch vụ không được để trống!");
+            }
+            else
+            {
+                if (await bll_dichvu.Find(txtMaDichVu.Text.Trim()) == true)
+                {
+                    DTO_DichVu dto = new DTO_DichVu();
+                    dto.MaDichVu = txtMaDichVu.Text.Trim();
+                    dto.TenDichVu = txtTenDichVu.Text.Trim();
+                    dto.HinhAnh = txtHinhAnh.Text.Trim();
+                    dto.MaLoaiDichVu = cboMaLoaiDichVu.Text;
+
+                    bool ketqua = await bll_dichvu.Update(dto);
+
+                    if (ketqua == true)
+                    {
+                        MessageBox.Show("Cập nhật thành công.");
+                        LamMoiDichVu();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Cập nhật không thành công!!");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Mã dịch vụ không tồn tại");
+                }
+            }
+        }
+
+
         private void LamMoi()
         {
             txtMaLoaiDichVu.Enabled = false;
             txtTenLoaiDichVu.Enabled = false;
+
             btnLuu.Enabled = false;
             btnThem.Enabled = true;
             btnXoa.Enabled = true;
@@ -134,6 +253,27 @@ namespace GUI
             txtTenLoaiDichVu.Text = "";
 
             LayDanhSach();
+        }
+
+        private void LamMoiDichVu()
+        {
+            txtMaDichVu.Enabled = false;
+            txtTenDichVu.Enabled = false;
+            txtHinhAnh.Enabled = false;
+            cboMaLoaiDichVu.Enabled = false;
+
+            btnLuu2.Enabled = false;
+            btnThem2.Enabled = true;
+            btnXoa2.Enabled = true;
+            btnSua2.Enabled = true;
+
+            txtMaDichVu.Text = "";
+            txtTenDichVu.Text = "";
+            txtHinhAnh.Text = "";
+            cboMaLoaiDichVu.Text = "";
+
+            LayDanhSachDichVu();
+            LoadComboBoxDichVu();
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -178,11 +318,11 @@ namespace GUI
             {
                 Them();
             }
-            if(luachon ==2)
+            if (luachon == 2)
             {
                 Xoa();
             }
-            if(luachon == 3)
+            if (luachon == 3)
             {
                 Sua();
             }
@@ -202,6 +342,97 @@ namespace GUI
         private void GUI_QuanLyDichVu_Load(object sender, EventArgs e)
         {
             LamMoi();
+            LamMoiDichVu();
+        }
+
+        private void btnThem2_Click(object sender, EventArgs e)
+        {
+            txtMaDichVu.Enabled = true;
+            txtTenDichVu.Enabled = true;
+            txtHinhAnh.Enabled = true;
+            cboMaLoaiDichVu.Enabled = true;
+
+            btnLuu2.Enabled = true;
+            btnThem2.Enabled = false;
+            btnXoa2.Enabled = false;
+            btnSua2.Enabled = false;
+
+            luachon2 = 1;
+        }
+
+        private void btnXoa2_Click(object sender, EventArgs e)
+        {
+            txtMaDichVu.Enabled = true;
+            txtTenDichVu.Enabled = false;
+            txtHinhAnh.Enabled = false;
+            cboMaLoaiDichVu.Enabled = false;
+
+            btnLuu2.Enabled = true;
+            btnThem2.Enabled = false;
+            btnXoa2.Enabled = false;
+            btnSua2.Enabled = false;
+
+            luachon2 = 2;
+        }
+
+        private void btnSua2_Click(object sender, EventArgs e)
+        {
+            txtMaDichVu.Enabled = true;
+            txtTenDichVu.Enabled = true;
+            txtHinhAnh.Enabled = true;
+            cboMaLoaiDichVu.Enabled = true;
+
+            btnLuu2.Enabled = true;
+            btnThem2.Enabled = false;
+            btnXoa2.Enabled = false;
+            btnSua2.Enabled = false;
+
+            luachon2 = 3;
+        }
+
+        private void btnLuu2_Click(object sender, EventArgs e)
+        {
+            if(luachon2==1)
+            {
+                ThemDichVu();
+            }
+            if(luachon2==2)
+            {
+                XoaDichVu();
+            }
+            if(luachon2==3)
+            {
+                SuaDichVu();
+            }
+        }
+
+        private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dataGridView2.Rows[e.RowIndex];
+
+                txtMaDichVu.Text = row.Cells["MaDichVu"].Value.ToString();
+                txtTenDichVu.Text = row.Cells["TenDichVu"].Value.ToString();
+                txtHinhAnh.Text = row.Cells["HinhAnh"].Value.ToString();
+                cboMaLoaiDichVu.Text = row.Cells["MaLoaiDichVu"].Value.ToString();
+            }
+        }
+
+        private void btnChonAnh_Click(object sender, EventArgs e)
+        {
+            using (var openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "Image Files (*.jpg, *.jpeg, *.png)|*.jpg;*.jpeg;*.png";
+                openFileDialog.Multiselect = false;
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string selectedImagePath = openFileDialog.FileName;
+
+                    txtHinhAnh.Text = selectedImagePath;
+                }
+            }
         }
     }
 }

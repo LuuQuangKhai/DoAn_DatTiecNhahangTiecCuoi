@@ -17,27 +17,32 @@ namespace BLL
             dal = new DAL_DichVu();
         }
 
-        public async Task<List<DTO_DichVu>> GetLoaiDichVu()
+        public async Task<List<DTO_DichVu>> GetAll()
         {
             return await dal.GetItemFormAPI();
         }
 
-        public async Task<bool> AddLoaiDichVu(DTO_DichVu dto)
+        public async Task<bool> Add(DTO_DichVu dto)
         {
             bool ketqua = await dal.AddItemToAPI(dto);
             return ketqua;
         }
 
-        public async Task<bool> DeleteLoaiDichVu(string ma)
+        public async Task<bool> Delete(string ma)
         {
             bool ketqua = await dal.DeleteItemFromAPI(ma);
             return ketqua;
         }
 
-        public async Task<bool> UpdateLoaiDichVu(DTO_DichVu dto)
+        public async Task<bool> Update(DTO_DichVu dto)
         {
             bool ketqua = await dal.UpdateItemInAPI(dto);
             return ketqua;
+        }
+
+        public async Task<bool> Find(string ma)
+        {
+            return await dal.FindItemInAPI(ma);
         }
     }
 }

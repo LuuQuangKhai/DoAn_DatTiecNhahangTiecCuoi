@@ -39,8 +39,24 @@
             label1 = new Label();
             dataGridView1 = new DataGridView();
             groupBox2 = new GroupBox();
+            dataGridView2 = new DataGridView();
+            btnLuu2 = new Button();
+            btnSua2 = new Button();
+            txtHinhAnh = new TextBox();
+            btnXoa2 = new Button();
+            btnChonAnh = new Button();
+            btnThem2 = new Button();
+            cboMaLoaiDichVu = new ComboBox();
+            txtTenDichVu = new TextBox();
+            txtMaDichVu = new TextBox();
+            label6 = new Label();
+            label5 = new Label();
+            label4 = new Label();
+            label3 = new Label();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             SuspendLayout();
             // 
             // groupBox1
@@ -147,6 +163,20 @@
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(dataGridView2);
+            groupBox2.Controls.Add(btnLuu2);
+            groupBox2.Controls.Add(btnSua2);
+            groupBox2.Controls.Add(txtHinhAnh);
+            groupBox2.Controls.Add(btnXoa2);
+            groupBox2.Controls.Add(btnChonAnh);
+            groupBox2.Controls.Add(btnThem2);
+            groupBox2.Controls.Add(cboMaLoaiDichVu);
+            groupBox2.Controls.Add(txtTenDichVu);
+            groupBox2.Controls.Add(txtMaDichVu);
+            groupBox2.Controls.Add(label6);
+            groupBox2.Controls.Add(label5);
+            groupBox2.Controls.Add(label4);
+            groupBox2.Controls.Add(label3);
             groupBox2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             groupBox2.Location = new Point(458, 3);
             groupBox2.Name = "groupBox2";
@@ -154,6 +184,132 @@
             groupBox2.TabIndex = 1;
             groupBox2.TabStop = false;
             groupBox2.Text = "Quản lý dịch vụ";
+            // 
+            // dataGridView2
+            // 
+            dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView2.Location = new Point(6, 300);
+            dataGridView2.Name = "dataGridView2";
+            dataGridView2.RowTemplate.Height = 25;
+            dataGridView2.Size = new Size(757, 459);
+            dataGridView2.TabIndex = 13;
+            dataGridView2.CellClick += dataGridView2_CellClick;
+            // 
+            // btnLuu2
+            // 
+            btnLuu2.Location = new Point(525, 250);
+            btnLuu2.Name = "btnLuu2";
+            btnLuu2.Size = new Size(75, 23);
+            btnLuu2.TabIndex = 12;
+            btnLuu2.Text = "Lưu";
+            btnLuu2.UseVisualStyleBackColor = true;
+            btnLuu2.Click += btnLuu2_Click;
+            // 
+            // btnSua2
+            // 
+            btnSua2.Location = new Point(405, 250);
+            btnSua2.Name = "btnSua2";
+            btnSua2.Size = new Size(75, 23);
+            btnSua2.TabIndex = 11;
+            btnSua2.Text = "Sửa";
+            btnSua2.UseVisualStyleBackColor = true;
+            btnSua2.Click += btnSua2_Click;
+            // 
+            // txtHinhAnh
+            // 
+            txtHinhAnh.Location = new Point(270, 151);
+            txtHinhAnh.Name = "txtHinhAnh";
+            txtHinhAnh.Size = new Size(238, 23);
+            txtHinhAnh.TabIndex = 8;
+            // 
+            // btnXoa2
+            // 
+            btnXoa2.Location = new Point(285, 250);
+            btnXoa2.Name = "btnXoa2";
+            btnXoa2.Size = new Size(75, 23);
+            btnXoa2.TabIndex = 10;
+            btnXoa2.Text = "Xóa";
+            btnXoa2.UseVisualStyleBackColor = true;
+            btnXoa2.Click += btnXoa2_Click;
+            // 
+            // btnChonAnh
+            // 
+            btnChonAnh.Location = new Point(525, 150);
+            btnChonAnh.Name = "btnChonAnh";
+            btnChonAnh.Size = new Size(75, 23);
+            btnChonAnh.TabIndex = 7;
+            btnChonAnh.Text = "Chọn ảnh";
+            btnChonAnh.UseVisualStyleBackColor = true;
+            btnChonAnh.Click += btnChonAnh_Click;
+            // 
+            // btnThem2
+            // 
+            btnThem2.Location = new Point(165, 250);
+            btnThem2.Name = "btnThem2";
+            btnThem2.Size = new Size(75, 23);
+            btnThem2.TabIndex = 9;
+            btnThem2.Text = "Thêm";
+            btnThem2.UseVisualStyleBackColor = true;
+            btnThem2.Click += btnThem2_Click;
+            // 
+            // cboMaLoaiDichVu
+            // 
+            cboMaLoaiDichVu.FormattingEnabled = true;
+            cboMaLoaiDichVu.Location = new Point(270, 205);
+            cboMaLoaiDichVu.Name = "cboMaLoaiDichVu";
+            cboMaLoaiDichVu.Size = new Size(330, 23);
+            cboMaLoaiDichVu.TabIndex = 6;
+            // 
+            // txtTenDichVu
+            // 
+            txtTenDichVu.Location = new Point(270, 97);
+            txtTenDichVu.Name = "txtTenDichVu";
+            txtTenDichVu.Size = new Size(330, 23);
+            txtTenDichVu.TabIndex = 5;
+            // 
+            // txtMaDichVu
+            // 
+            txtMaDichVu.Location = new Point(270, 43);
+            txtMaDichVu.Name = "txtMaDichVu";
+            txtMaDichVu.Size = new Size(330, 23);
+            txtMaDichVu.TabIndex = 4;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(165, 208);
+            label6.Name = "label6";
+            label6.Size = new Size(89, 15);
+            label6.TabIndex = 3;
+            label6.Text = "Mã loại dịch vụ";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(165, 154);
+            label5.Name = "label5";
+            label5.Size = new Size(56, 15);
+            label5.TabIndex = 2;
+            label5.Text = "Hình ảnh";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(165, 100);
+            label4.Name = "label4";
+            label4.Size = new Size(70, 15);
+            label4.TabIndex = 1;
+            label4.Text = "Tên dịch vụ";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(165, 46);
+            label3.Name = "label3";
+            label3.Size = new Size(67, 15);
+            label3.TabIndex = 0;
+            label3.Text = "Mã dịch vụ";
             // 
             // GUI_QuanLyDichVu
             // 
@@ -167,6 +323,9 @@
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             ResumeLayout(false);
         }
 
@@ -183,5 +342,19 @@
         private Label label2;
         private Label label1;
         private DataGridView dataGridView1;
+        private Label label6;
+        private Label label5;
+        private Label label4;
+        private Label label3;
+        private Button btnLuu2;
+        private Button btnSua2;
+        private TextBox txtHinhAnh;
+        private Button btnXoa2;
+        private Button btnChonAnh;
+        private Button btnThem2;
+        private ComboBox cboMaLoaiDichVu;
+        private TextBox txtTenDichVu;
+        private TextBox txtMaDichVu;
+        private DataGridView dataGridView2;
     }
 }

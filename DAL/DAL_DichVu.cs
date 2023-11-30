@@ -87,5 +87,21 @@ namespace DAL
                 return false;
             }
         }
+
+        public async Task<bool> FindItemInAPI(string ma)
+        {
+            try
+            {
+                HttpResponseMessage response = await httpClient.GetAsync($"/api/dich-vu/get-single/{ma}");
+                response.EnsureSuccessStatusCode(); // Đảm bảo yêu cầu thành công
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                // Xử lý lỗi
+                return false;
+            }
+        }
     }
 }

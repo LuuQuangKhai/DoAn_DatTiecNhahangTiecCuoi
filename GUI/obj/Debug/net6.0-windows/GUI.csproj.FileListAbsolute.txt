@@ -4,7 +4,6 @@ C:\Users\defaultuser0.LAPTOP-POTNR7PE\OneDrive\Desktop\DoAnWinForm_DatTiecNhaHan
 C:\Users\defaultuser0.LAPTOP-POTNR7PE\OneDrive\Desktop\DoAnWinForm_DatTiecNhaHangTiecCuoi\QuanLyDatTiecNhaHangTiecCuoi\GUI\bin\Debug\net6.0-windows\GUI.dll
 C:\Users\defaultuser0.LAPTOP-POTNR7PE\OneDrive\Desktop\DoAnWinForm_DatTiecNhaHangTiecCuoi\QuanLyDatTiecNhaHangTiecCuoi\GUI\bin\Debug\net6.0-windows\GUI.pdb
 C:\Users\defaultuser0.LAPTOP-POTNR7PE\OneDrive\Desktop\DoAnWinForm_DatTiecNhaHangTiecCuoi\QuanLyDatTiecNhaHangTiecCuoi\GUI\obj\Debug\net6.0-windows\GUI.csproj.AssemblyReference.cache
-C:\Users\defaultuser0.LAPTOP-POTNR7PE\OneDrive\Desktop\DoAnWinForm_DatTiecNhaHangTiecCuoi\QuanLyDatTiecNhaHangTiecCuoi\GUI\obj\Debug\net6.0-windows\GUI.Form1.resources
 C:\Users\defaultuser0.LAPTOP-POTNR7PE\OneDrive\Desktop\DoAnWinForm_DatTiecNhaHangTiecCuoi\QuanLyDatTiecNhaHangTiecCuoi\GUI\obj\Debug\net6.0-windows\GUI.csproj.GenerateResource.cache
 C:\Users\defaultuser0.LAPTOP-POTNR7PE\OneDrive\Desktop\DoAnWinForm_DatTiecNhaHangTiecCuoi\QuanLyDatTiecNhaHangTiecCuoi\GUI\obj\Debug\net6.0-windows\GUI.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\defaultuser0.LAPTOP-POTNR7PE\OneDrive\Desktop\DoAnWinForm_DatTiecNhaHangTiecCuoi\QuanLyDatTiecNhaHangTiecCuoi\GUI\obj\Debug\net6.0-windows\GUI.AssemblyInfoInputs.cache
